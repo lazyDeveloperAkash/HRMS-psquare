@@ -58,7 +58,9 @@ const candidateSlice = createSlice({
     isDeleting: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    candidateReset: () => initialState,
+  },
   extraReducers: (builder) => {
     builder
       // Fetch All
@@ -123,5 +125,7 @@ const candidateSlice = createSlice({
       });
   },
 });
+
+export const { candidateReset } = candidateSlice.actions;
 
 export default candidateSlice.reducer;

@@ -44,6 +44,7 @@
   animation: calendarFadeIn 0.2s ease;
   width: 280px;
   user-select: none;
+  z-index: 10000;
 }
 
 @keyframes calendarFadeIn {
@@ -62,6 +63,9 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 16px;
+  padding: 8px 0; /* no big padding */
+  background-color: white !important; /* force remove purple */
+  border: none;
 }
 
 .calendar-nav-button {
@@ -86,6 +90,7 @@
   font-size: 14px;
   font-weight: 600;
   color: #374151;
+  background: none !important; /* force remove background */
 }
 
 .calendar-grid {
@@ -146,7 +151,6 @@
   color: transparent;
 }
 
-/* Ensure proper visibility */
 .calendar-day:not(.empty) {
   font-weight: 500;
 }

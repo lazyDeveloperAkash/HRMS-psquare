@@ -13,7 +13,8 @@
   flex-direction: column;
   max-width: 80%;
   /* position: relative; */
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .dashboard-content {
@@ -67,6 +68,7 @@
   /* padding: 24px; */
   align-items: flex-start;
   justify-content: space-between;
+  overflow-x: hidden;
 }
 
 /* Responsive Design */

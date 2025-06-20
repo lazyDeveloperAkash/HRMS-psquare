@@ -19,11 +19,9 @@ const DatePicker = ({ value, onChange, placeholder = "Select date", error = fals
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop
       const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft
 
-      // Calculate position to ensure dropdown is visible
       let top = rect.bottom + scrollTop + 4
       let left = rect.left + scrollLeft
 
-      // Adjust if dropdown would go off screen
       const dropdownWidth = 280
       const dropdownHeight = 320
       const viewportWidth = window.innerWidth
@@ -48,52 +46,16 @@ const DatePicker = ({ value, onChange, placeholder = "Select date", error = fals
     setIsOpen(!isOpen)
   }
 
-  // Close calendar when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (containerRef.current && !containerRef.current.contains(event.target)) {
         setIsOpen(false)
       }
     }
-
     if (isOpen) {
       document.addEventListener("mousedown", handleClickOutside)
       return () => {
         document.removeEventListener("mousedown", handleClickOutside)
-      }
-    }
-  }, [isOpen])
-
-  // Close on escape key
-  useEffect(() => {
-    const handleEscapeKey = (event) => {
-      if (event.key === "Escape" && isOpen) {
-        setIsOpen(false)
-      }
-    }
-
-    if (isOpen) {
-      document.addEventListener("keydown", handleEscapeKey)
-      return () => {
-        document.removeEventListener("keydown", handleEscapeKey)
-      }
-    }
-  }, [isOpen])
-
-  // Recalculate position on scroll or resize
-  useEffect(() => {
-    const handleScrollOrResize = () => {
-      if (isOpen) {
-        calculateDropdownPosition()
-      }
-    }
-
-    if (isOpen) {
-      window.addEventListener("scroll", handleScrollOrResize, true)
-      window.addEventListener("resize", handleScrollOrResize)
-      return () => {
-        window.removeEventListener("scroll", handleScrollOrResize, true)
-        window.removeEventListener("resize", handleScrollOrResize)
       }
     }
   }, [isOpen])
@@ -136,12 +98,11 @@ const DatePicker = ({ value, onChange, placeholder = "Select date", error = fals
     const firstDay = getFirstDayOfMonth(currentDate)
     const days = []
 
-    // Empty cells for days before the first day of the month
     for (let i = 0; i < firstDay; i++) {
       days.push(<div key={`empty-${i}`} className="calendar-day empty"></div>)
     }
+    <br></br>
 
-    // Days of the month
     for (let day = 1; day <= daysInMonth; day++) {
       const date = new Date(currentDate.getFullYear(), currentDate.getMonth(), day)
       const isSelected =
@@ -165,18 +126,8 @@ const DatePicker = ({ value, onChange, placeholder = "Select date", error = fals
   }
 
   const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
   ]
 
   const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
@@ -215,7 +166,9 @@ const DatePicker = ({ value, onChange, placeholder = "Select date", error = fals
               </div>
             ))}
           </div>
-          <div className="calendar-days">{renderCalendar()}</div>
+          <div className="calendar-days">
+            {renderCalendar()}
+          </div>
         </div>
       </div>
     )
@@ -229,8 +182,6 @@ const DatePicker = ({ value, onChange, placeholder = "Select date", error = fals
           <Calendar className="date-picker-icon" size={16} />
         </div>
       </div>
-
-      {/* Render dropdown using portal to avoid modal constraints */}
       {typeof window !== "undefined" && createPortal(renderDropdown(), document.body)}
     </>
   )

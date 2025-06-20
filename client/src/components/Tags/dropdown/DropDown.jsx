@@ -70,7 +70,7 @@ const Dropdown = ({
       </button>
       
       {isOpen && (
-        <div className="dropdown-menu">
+        <div className="dropdown-menu" style={{maxHeight: "100px"}}>
           {options.map((option, index) => {
             const optionValue = typeof option === 'string' ? option : option.value;
             const optionLabel = typeof option === 'string' ? option : option.label || option.value;

@@ -22,10 +22,6 @@ exports.createLeave = catchAsyncErrors(async (req, res, next) => {
 
   const documentFile = req.file;
 
-  if(req.file){
-    return next(new ErrorHandler("image"))
-  }
-
   const leave = new Leave({
     employee: employeeId,
     reason,
@@ -43,7 +39,9 @@ exports.createLeave = catchAsyncErrors(async (req, res, next) => {
 
   await leave.save();
 
-  sendRes(201, res, leave, "Leave request created successfully");
+  const newLeave = await Leave.findById(leave._id).populate("employee", "name email phone");
+
+  sendRes(201, res, newLeave, "Leave request created successfully");
 });
 
 // Read All Leaves
@@ -71,6 +69,7 @@ exports.updateLeaveStatus = catchAsyncErrors(async (req, res, next) => {
   leave.approvedDate = new Date();
 
   await leave.save();
+  const newLeave = await Leave.findById(leave._id).populate("employee", "name email phone");
 
-  sendRes(200, res, leave, "Leave request status updated successfully");
+  sendRes(200, res, newLeave, "Leave request status updated successfully");
 });

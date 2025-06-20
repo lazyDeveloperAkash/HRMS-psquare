@@ -30,6 +30,7 @@ export const updateLeaveStatus = createAsyncThunk(
   async ({ id, status }, thunkAPI) => {
     try {
       const res = await axios.patch(`/leave/${id}/status`, { status });
+      console.log(res.data);
       return res.data.data;
     } catch (err) {
       return thunkAPI.rejectWithValue(err.response?.data?.message || err.message);
@@ -47,7 +48,9 @@ const leaveSlice = createSlice({
     isUpdating: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    leaveReset: () => initialState,
+  },
   extraReducers: (builder) => {
     builder
       // Fetch All
@@ -97,5 +100,7 @@ const leaveSlice = createSlice({
       });
   },
 });
+
+export const { leaveReset } = leaveSlice.actions;
 
 export default leaveSlice.reducer;

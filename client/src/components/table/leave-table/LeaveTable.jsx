@@ -9,10 +9,11 @@ const leaveStatusOptions = [
   { value: "Rejected", label: "Rejected" },
 ];
 
-const AppliedLeaves = ({ data = [], onStatusChange, className = "" }) => {
+const LeaveTable = ({ data = [], className = "" }) => {
   const dispatch = useDispatch();
+  console.log(data);
 
-  const handleStatusChange = (option, leave) => {
+  const StatusChangeHandler = (option, leave) => {
     dispatch(updateLeaveStatus({ id: leave._id, status: option.value }));
   };
 
@@ -66,7 +67,7 @@ const AppliedLeaves = ({ data = [], onStatusChange, className = "" }) => {
                   <StatusDropdown
                     options={leaveStatusOptions}
                     value={leave.status || "Pending"}
-                    onChange={(option) => handleStatusChange(option, leave)}
+                    onChange={(option) => StatusChangeHandler(option, leave)}
                   />
                 </div>
                 <div className="row-cell docs-cell">
@@ -101,4 +102,4 @@ const AppliedLeaves = ({ data = [], onStatusChange, className = "" }) => {
   );
 };
 
-export default AppliedLeaves;
+export default LeaveTable;

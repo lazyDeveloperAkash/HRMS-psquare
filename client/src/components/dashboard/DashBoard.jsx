@@ -17,13 +17,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../redux/slices/authSlice";
 import CandidatesTable from "../table/candidate-table/CandidateTable";
 import {
+  candidateReset,
   createCandidate,
   deleteCandidate,
   fetchCandidates,
   updateCandidate,
 } from "../../redux/slices/candidateSlice";
 import LeaveCalendar from "../leave-calender/LeaveCalendar";
-import { createLeave, fetchLeaves } from "../../redux/slices/leaveSlice";
+import { createLeave, fetchLeaves, leaveReset } from "../../redux/slices/leaveSlice";
 
 const Dashboard = () => {
   const [currentRoute, setCurrentRoute] = useState("/dashboard/candidates");
@@ -50,19 +51,19 @@ const Dashboard = () => {
 
   const statusOptions = [
     { value: "all", label: "All Status" },
-    { value: "new", label: "New" },
-    { value: "selected", label: "Selected" },
-    { value: "rejected", label: "Rejected" },
-    { value: "ongoing", label: "Ongoing" },
-    { value: "scheduled", label: "Scheduled" },
+    { value: "New", label: "New" },
+    { value: "Selected", label: "Selected" },
+    { value: "Rejected", label: "Rejected" },
+    { value: "Ongoing", label: "Ongoing" },
+    { value: "Scheduled", label: "Scheduled" },
   ];
 
   const positionOptions = [
     { value: "all", label: "All Positions" },
-    { value: "developer", label: "Developer" },
-    { value: "designer", label: "Designer" },
-    { value: "manager", label: "Manager" },
-    { value: "hr", label: "Human Resource" },
+    { value: "Developer", label: "Developer" },
+    { value: "Designer", label: "Designer" },
+    { value: "Manager", label: "Manager" },
+    { value: "Hr", label: "Human Resource" },
   ];
 
   const handleRouteChange = (route, routeId) => {
@@ -168,12 +169,10 @@ const Dashboard = () => {
 
     return matchesSearch && matchesStatus;
   });
+  console.log(leaves);
+  console.log(selectedStatus);
+  console.log(filteredleavesData);
 
-
-  const handleLeaveFilter = (status)=>{
-    if(status === "All") return leaves
-    return leaves.filter((leave)=> leave.status === status);
-  }
 
   const renderCurrentTable = () => {
     if (currentRoute.includes("employees")) {
@@ -200,7 +199,7 @@ const Dashboard = () => {
         <div className="leave-management-container">
           <LeaveTable
             data={filteredleavesData}
-            onStatusChange={handleStatusChange}
+            // onStatusChange={handleStatusChange}
           />
           <LeaveCalendar approvedLeaves={leaves.filter((leave)=> leave.status === "Approved")} />
         </div>
@@ -217,8 +216,13 @@ const Dashboard = () => {
     }
   };
 
-  const handleLogout = () => {
-    dispatch(logoutUser());
+  const handleLogout = async() => {
+    const result = dispatch(logoutUser());
+    if (logoutUser.fulfilled.match(result)) {
+    dispatch(candidateReset());
+    dispatch(leaveReset());
+  }
+
   };
 
   const handleAddCandidateSubmit = (data) => {
@@ -230,6 +234,7 @@ const Dashboard = () => {
   };
 
   const handleAddLeaveSubmit = (data) => {
+    console.log(data);
     dispatch(createLeave(data));
   };
 

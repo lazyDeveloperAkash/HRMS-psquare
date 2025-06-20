@@ -160,8 +160,8 @@ const LeaveCalendar = ({ approvedLeaves = [] }) => {
 
         {/* Week Headers */}
         <div className="week-headers">
-          {weekDays.map((day) => (
-            <div key={day} className="week-day">
+          {weekDays.map((day, idx) => (
+            <div key={idx} className="week-day">
               {day}
             </div>
           ))}

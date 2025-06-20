@@ -78,21 +78,17 @@
 }
 
 .dropdown-menu {
-  position: absolute; /* Changed from fixed */
-  top: 100%; /* Position below the trigger */
-  left: 0;
-  right: 0;
+  position: fixed;
   z-index: 1001;
   background: white;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   max-height: 200px;
-  overflow-y: auto; /* Changed from hidden */
+  overflow-y: hidden;
   animation: statusDropdownFadeIn 0.2s ease;
   min-width: 120px;
   color: black;
-  margin-top: 4px; /* Small gap between trigger and menu */
 }
 
 @keyframes statusDropdownFadeIn {

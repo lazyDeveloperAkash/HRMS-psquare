@@ -36,6 +36,7 @@ const AddLeaveModal = ({ isOpen, onClose, onSubmit }) => {
       const id = data.employee._id;
       data.employee = id;
       const formData = new FormData();
+      console.log(data);
 
       for (const key in data) {
         if (key === "document" && data.document) {
@@ -79,8 +80,9 @@ const AddLeaveModal = ({ isOpen, onClose, onSubmit }) => {
                   users={employees}
                   value={field.value}
                   onUserSelect={(selectedUser) => {
+                    console.log(selectedUser);
                     field.onChange(selectedUser);
-                    setValue("designation", selectedUser?.designation || "");
+                    setValue("designation", selectedUser?.position || "");
                   }}
                   placeholder="Search Employee Name"
                 />
