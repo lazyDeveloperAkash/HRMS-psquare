@@ -1,0 +1,212 @@
+/* LeaveCalendar.css */
+
+.leave-calendar {
+  width: 100%;
+  max-width: 28rem;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* Header Styles */
+.calendar-header {
+  background-color: #7c3aed;
+  color: white;
+  padding: 1rem;
+}
+
+.calendar-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Calendar Content */
+.calendar-content {
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Navigation */
+.calendar-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.nav-button {
+  padding: 0.25rem;
+  border: none;
+  background: transparent;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.nav-button:hover {
+  background-color: #f3f4f6;
+}
+
+.nav-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.month-title {
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+/* Week Headers */
+.week-headers {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.week-day {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+  padding: 0.5rem;
+}
+
+/* Calendar Grid */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+}
+
+.calendar-day {
+  position: relative;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  border: none;
+  background: transparent;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #374151;
+}
+
+.calendar-day.inactive {
+  color: #d1d5db;
+}
+
+.calendar-day.selected {
+  background-color: #ede9fe;
+  color: #7c3aed;
+  font-weight: 600;
+}
+
+.calendar-day:hover:not(.selected) {
+  background-color: #f3f4f6;
+}
+
+.leave-badge {
+  position: absolute;
+  top: -0.25rem;
+  right: -0.25rem;
+  background-color: #7c3aed;
+  color: white;
+  font-size: 0.75rem;
+  border-radius: 50%;
+  width: 1.25rem;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Approved Leaves Section */
+.approved-leaves-section {
+  padding: 1rem;
+}
+
+.section-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 0.75rem 0;
+}
+
+.leaves-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 16rem;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.leaves-list::-webkit-scrollbar {
+  display: none;
+}
+
+.leave-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s;
+  justify-content: space-between;
+  border-radius: 8px;
+}
+
+.leave-item:hover {
+  background-color: #f9fafb;
+}
+
+.employee-avatar {
+  width: 2rem;
+  height: 2rem;
+  background-color: #ede9fe;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-icon {
+  width: 1rem;
+  height: 1rem;
+  color: #7c3aed;
+}
+
+.employee-info {
+  flex: 1;
+}
+
+.employee-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 0.125rem;
+}
+
+.employee-designation {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.leave-date {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.no-leaves {
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.875rem;
+  padding: 2rem 0;
+}

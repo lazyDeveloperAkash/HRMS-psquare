@@ -1,0 +1,144 @@
+.dashboard-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.dashboard-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+  /* position: relative; */
+  overflow: hidden;
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 24px;
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 20px;
+}
+
+.filters-section {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.filter-dropdown {
+  min-width: 150px;
+}
+
+.search-section {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.dashboard-search {
+  min-width: 300px;
+  border-radius: 9999px;
+}
+
+.add-button {
+  white-space: nowrap;
+}
+
+.table-section {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.leave-management-container{
+  width: 100%;
+  display: flex;
+  gap: 24px;
+  /* padding: 24px; */
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+
+  .content-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .filters-section {
+    justify-content: flex-start;
+  }
+
+  .search-section {
+    justify-content: space-between;
+  }
+
+  .dashboard-search {
+    min-width: 250px;
+    border-radius: 9999px;
+  }
+  .leave-management-container {
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-main {
+    margin-left: 0;
+  }
+
+  .dashboard-content {
+    padding: 16px;
+  }
+
+  .filters-section {
+    flex-wrap: wrap;
+  }
+
+  .filter-dropdown {
+    min-width: 120px;
+  }
+
+  .search-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dashboard-search {
+    min-width: auto;
+    border-radius: 9999px;
+  }
+  .leave-management-container {
+    padding: 16px;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .content-header {
+    gap: 12px;
+  }
+
+  .filters-section {
+    gap: 12px;
+  }
+
+  .search-section {
+    gap: 12px;
+  }
+}

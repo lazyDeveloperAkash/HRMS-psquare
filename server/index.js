@@ -1,0 +1,50 @@
+require("dotenv").config({ path: "./.env", debug: true, encoding: "UTF-8" });
+
+const express = require("express");
+
+const app = express();
+
+//connect databse
+require("./config/database.js")();
+
+//cors
+const cors = require("cors");
+app.use(cors({origin: true, credentials: true}));
+
+//Logger (tiny Data/small data)
+const logger = require("morgan");
+app.use(logger("tiny"));
+
+//BodyParser
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+//cookie parser
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
+
+//routes
+app.use("/api/v1", require("./routes/index.js"));
+
+//file handling
+const path = require("path");
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+app.get("/", (req,res)=> res.json("hello"))
+
+//res handler
+// const responseHandler = require("./utils/sendRes.js");
+// app.use(responseHandler);
+
+//Error Handling
+const ErrorHandler = require("./utils/ErrorHandler.js");
+const { generatedErrors } = require("./middleware/error.js");
+app.all(/.*/, (req, res, next) => {
+  next(new ErrorHandler(`Requested Url Not Found ${req.url}`, 404));
+});
+app.use(generatedErrors);
+
+//create server
+app.listen(process.env.PORT, () => {
+  console.log(`Server running on Port ${process.env.PORT}`);
+});

@@ -1,0 +1,259 @@
+.auth-container {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+/* justify-content: space-between; */
+/* margin: 20px; */
+gap: 10px;
+}
+
+.auth-content {
+  flex: 1;
+  display: flex;
+  max-width: 80%;
+  max-height: 80vh;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.auth-left {
+  flex: 1;
+  background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.dashboard-preview {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 30px;
+}
+
+.dashboard-preview img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.auth-description h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.auth-description p {
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin-bottom: 30px;
+}
+
+.pagination-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: white;
+}
+
+.auth-right {
+  flex: 1;
+  padding: 60px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-form {
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-form h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+}
+
+.form-group .floating-input-container {
+  margin-bottom: 0;
+}
+
+.error-message {
+  display: block;
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: 4px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.forgot-password {
+  text-align: right;
+  margin-bottom: 24px;
+}
+
+.forgot-password a {
+  color: #7c3aed;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+  color: #5b21b6;
+}
+
+.auth-submit-button {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.auth-footer {
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.a{
+  color: #7c3aed;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.a:hover {
+  text-decoration: underline;
+  color: #5b21b6;
+}
+
+/* Form transition animations */
+.form-group {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .auth-content {
+    flex-direction: column;
+    margin: 20px;
+    width: 90%;
+  }
+
+  .auth-left {
+    padding: 30px 20px;
+    display: none;
+  }
+
+  .auth-right {
+    padding: 40px 20px;
+  }
+
+  .auth-form h1 {
+    font-size: 24px;
+  }
+
+  .auth-description h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 0;
+  }
+
+  .auth-content {
+    margin: 0;
+    border-radius: 0;
+    width: 90%;
+  }
+
+  .auth-right {
+    padding: 30px 20px;
+  }
+
+  .auth-form {
+    max-width: none;
+  }
+
+  .form-group input {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Loading state styles */
+.auth-button:disabled {
+  position: relative;
+}
+
+.auth-button:disabled::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  margin: auto;
+  border: 2px solid transparent;
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,38 @@
+.logout-modal .modal-container {
+  max-width: 400px;
+}
+
+.logout-modal-content {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.logout-message {
+  font-size: 16px;
+  color: #374151;
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+.logout-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.logout-button {
+  color: #ef4444 !important;
+  border-color: #ef4444 !important;
+}
+
+.logout-button:hover {
+  background-color: #ef4444 !important;
+  color: white !important;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .logout-actions {
+    flex-direction: column;
+  }
+}

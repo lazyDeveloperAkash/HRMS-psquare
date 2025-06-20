@@ -1,0 +1,221 @@
+.dropdown-container {
+  position: relative;
+  width: 200px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Ensure dropdown can extend beyond parent boundaries */
+  overflow: visible;
+}
+
+.status-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 12px;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  min-width: 80px;
+  text-transform: capitalize;
+}
+
+.status-dropdown-trigger:focus {
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.2);
+}
+
+.status-dropdown-trigger:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Status Colors */
+.status-dropdown-trigger.status-new {
+  background-color: #dbeafe;
+  color: #1e40af;
+  border-color: #93c5fd;
+}
+
+.status-dropdown-trigger.status-selected {
+  background-color: #d1fae5;
+  color: #065f46;
+  border-color: #86efac;
+}
+
+.status-dropdown-trigger.status-approved {
+  background-color: #d1fae5;
+  color: #065f46;
+  border-color: #86efac;
+}
+
+.status-dropdown-trigger.status-rejected {
+  background-color: #fee2e2;
+  color: #dc2626;
+  border-color: #fca5a5;
+}
+
+.status-dropdown-trigger.status-ongoing {
+  background-color: #fef3c7;
+  color: #d97706;
+  border-color: #fcd34d;
+}
+
+.status-dropdown-trigger.status-scheduled {
+  background-color: #e0e7ff;
+  color: #3730a3;
+  border-color: #a5b4fc;
+}
+
+.status-dropdown-trigger.status-present {
+  background-color: #d1fae5;
+  color: #065f46;
+  border-color: #86efac;
+}
+
+.status-dropdown-trigger.status-absent {
+  background-color: #fee2e2;
+  color: #dc2626;
+  border-color: #fca5a5;
+}
+
+.status-dropdown-trigger.status-medical-leave {
+  background-color: #fef3c7;
+  color: #d97706;
+  border-color: #fcd34d;
+}
+
+.status-dropdown-trigger.status-work-from-home {
+  background-color: #e0e7ff;
+  color: #3730a3;
+  border-color: #a5b4fc;
+}
+
+.status-dropdown-text {
+  flex: 1;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.status-dropdown-icon {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  opacity: 0.7;
+}
+
+.status-dropdown-icon.rotated {
+  transform: rotate(180deg);
+}
+
+.status-dropdown-menu {
+  position: fixed;
+  z-index: 1001;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  max-height: 200px;
+  overflow-y: hidden;
+  animation: statusDropdownFadeIn 0.2s ease;
+  min-width: 120px;
+}
+
+@keyframes statusDropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.status-dropdown-option {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+  border-radius: 4px;
+  margin: 2px 4px;
+}
+
+.status-dropdown-option:hover {
+  background-color: #f9fafb;
+}
+
+.status-dropdown-option.selected {
+  background-color: #f3f4f6;
+}
+
+.status-dropdown-option.approved {
+  background-color: #f3f4f6;
+}
+
+/* Option Colors */
+.status-dropdown-option.status-new {
+  color: #1e40af;
+}
+
+.status-dropdown-option.status-selected {
+  color: #065f46;
+}
+
+.status-dropdown-option.status-approved {
+  color: #065f46;
+}
+
+.status-dropdown-option.status-rejected {
+  color: #dc2626;
+}
+
+.status-dropdown-option.status-ongoing {
+  color: #d97706;
+}
+
+.status-dropdown-option.status-scheduled {
+  color: #3730a3;
+}
+
+.status-dropdown-option.status-present {
+  color: #065f46;
+}
+
+.status-dropdown-option.status-absent {
+  color: #dc2626;
+}
+
+.status-dropdown-option.status-medical-leave {
+  color: #d97706;
+}
+
+.status-dropdown-option.status-work-from-home {
+  color: #3730a3;
+}
+
+.status-dropdown-empty {
+  padding: 8px 12px;
+  color: #9ca3af;
+  font-style: italic;
+  text-align: center;
+  font-size: 12px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .status-dropdown-trigger {
+    min-width: 70px;
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  .status-dropdown-menu {
+    max-height: 150px;
+  }
+}

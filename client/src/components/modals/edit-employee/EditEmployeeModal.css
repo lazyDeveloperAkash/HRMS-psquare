@@ -1,0 +1,168 @@
+.edit-employee-modal .modal-container {
+  max-width: 800px;
+  width: 100%;
+  /* Ensure modal content can handle dropdowns */
+  overflow: visible;
+}
+
+.employee-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  /* Ensure form groups can contain positioned dropdowns */
+  position: relative;
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.save-button {
+  min-width: 120px;
+}
+
+.custom-dropdown {
+  position: relative;
+  z-index: 1;
+}
+
+.custom-dropdown.open {
+  /* Higher z-index when open to appear above other elements */
+  z-index: 9999;
+}
+
+.custom-dropdown ::-webkit-scrollbar {
+  display: none;
+}
+
+.dropdown-toggle {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  font-family: inherit;
+  padding: 8px;
+}
+
+.dropdown-toggle:hover {
+  border-color: #7c3aed;
+}
+
+.dropdown-toggle:focus {
+  outline: none;
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.dropdown-toggle.error {
+  border-color: #ef4444;
+}
+
+.dropdown-text {
+  color: black;
+  text-align: left;
+}
+
+.dropdown-text.placeholder {
+  color: #9ca3af;
+}
+
+.dropdown-arrow {
+  color: #6b7280;
+  transition: transform 0.2s ease;
+  font-size: 12px;
+}
+
+.custom-dropdown.open .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  /* Position above the button when near bottom */
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  /* Higher z-index to appear above all other elements */
+  z-index: 10000;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 4px;
+  /* Ensure dropdown doesn't get clipped */
+  min-width: 100%;
+}
+
+.dropdown-item {
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #374151;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.dropdown-item:hover {
+  background-color: #f3f4f6;
+}
+
+.dropdown-item:first-child {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.dropdown-item:last-child {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+/* Additional styles to prevent modal scrolling issues */
+.edit-employee-modal .modal-content {
+  overflow: visible;
+}
+
+.edit-employee-modal .modal-body {
+  overflow: visible;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .employee-form {
+    gap: 16px;
+  }
+}

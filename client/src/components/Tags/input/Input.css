@@ -1,0 +1,162 @@
+.floating-input-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.floating-input {
+  width: 100%;
+  padding: 16px 16px 8px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: white;
+  transition: all 0.3s ease;
+  outline: none;
+  color: black;
+}
+
+.floating-input:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+}
+
+.floating-input:disabled {
+  background-color: #f9fafb;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+.floating-label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #6b7280;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  background-color: white;
+  padding: 0 4px;
+  white-space: nowrap;
+}
+
+.floating-label.floating {
+  top: 0;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #7c3aed;
+  font-weight: 500;
+}
+
+.floating-input:focus + .floating-label {
+  color: #7c3aed;
+}
+
+.floating-input-container.error .floating-input {
+  border-color: #ef4444;
+}
+
+.floating-input-container.error .floating-input:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.floating-input-container.error .floating-label {
+  color: #ef4444;
+}
+
+.floating-input-container.error .floating-label.floating {
+  color: #ef4444;
+}
+
+.floating-input-container.disabled .floating-label {
+  color: #9ca3af;
+}
+
+.required-asterisk {
+  color: #ef4444;
+  margin-left: 2px;
+}
+
+/* Password input specific styles */
+.password-input-container {
+  position: relative;
+}
+
+.password-input-container .floating-input {
+  padding-right: 48px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+  z-index: 1;
+}
+
+.password-toggle:hover {
+  color: #374151;
+}
+
+.floating-input-container.disabled .password-toggle {
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Animation for smooth transitions */
+@keyframes labelFloat {
+  from {
+    top: 50%;
+    font-size: 16px;
+    color: #6b7280;
+  }
+  to {
+    top: 0;
+    font-size: 12px;
+    color: #7c3aed;
+  }
+}
+
+@keyframes labelSink {
+  from {
+    top: 0;
+    font-size: 12px;
+    color: #7c3aed;
+  }
+  to {
+    top: 50%;
+    font-size: 16px;
+    color: #6b7280;
+  }
+}
+
+/* Focus ring for accessibility */
+.floating-input:focus-visible {
+  /* outline: 2px solid #7c3aed; */
+  outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .floating-input {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  .floating-label {
+    font-size: 16px;
+  }
+
+  .floating-label.floating {
+    font-size: 12px;
+  }
+}
